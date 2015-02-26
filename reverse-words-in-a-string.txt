@@ -1,0 +1,36 @@
+class Solution
+{
+public:
+	void reverseWords(string &s)
+	{
+		string word;
+		stack<string> ss;
+		size_t len=s.length();
+		for(size_t i=0;i<=len;i++)
+		{
+			if(i==len || s[i]==' ')
+			{
+				if(word.length()>0)
+				{
+					ss.push(word);
+					word="";
+				}
+			}
+			else
+			{
+				word+=s[i];
+			}
+		}
+		s="";
+		while(ss.size()>1)
+		{
+			s+=ss.top();
+			s+=' ';
+			ss.pop();
+		}
+		if(!ss.empty())
+		{
+			s+=ss.top();
+		}
+	}
+};

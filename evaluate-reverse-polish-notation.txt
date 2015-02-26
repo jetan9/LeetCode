@@ -1,0 +1,44 @@
+class Solution {
+public:
+	void setOperand(stack<int>& s, int& a, int& b)
+	{
+		a=s.top();
+		s.pop();
+		b=s.top();
+		s.pop();
+	}
+
+    int evalRPN(vector<string> &tokens)
+	{
+		stack<int> s;
+		int a,b;
+		for(vector<string>::iterator it=tokens.begin();it!=tokens.end();it++)
+		{
+			if(*it=="+")
+			{
+				setOperand(s, a, b);
+				s.push(b+a);
+			}
+			else if(*it=="-")
+			{
+				setOperand(s, a, b);
+				s.push(b-a);
+			}
+			else if(*it=="*")
+			{
+				setOperand(s, a, b);
+				s.push(b*a);
+			}
+			else if(*it=="/")
+			{
+				setOperand(s, a, b);
+				s.push(b/a);
+			}
+			else
+			{
+				s.push(atoi(it->c_str()));
+			}
+		}
+		return s.top();
+    }
+};

@@ -1,0 +1,18 @@
+class Solution:
+	# @param root, a tree node
+	# @return a list of integers
+	def inorderTraversal(self, root):
+		s = []
+		res = []
+		s.append(root)
+		while len(s) > 0:
+			if s[-1] != None:
+				s.append(s[-1].left)
+			else:
+				s.pop()
+				if len(s) > 0:
+					res.append(s[-1].val)
+					p = s[-1]
+					s.pop()
+					s.append(p.right)
+		return res

@@ -1,0 +1,20 @@
+class Solution:
+    # @param digits, a list of integer digits
+    # @return a list of integer digits
+    def plusOne(self, digits):
+		digits.reverse()
+		digits.append(0)
+		index = 0
+		sum = digits[0] + 1
+		digits[0] = sum % 10
+		carry = sum / 10
+		while carry > 0:
+			index += 1
+			sum = digits[index] + carry
+			digits[index] = sum % 10
+			carry = sum / 10
+		digits.reverse()
+		if digits[0] == 0:
+			digits.remove(0)
+		return digits
+        

@@ -1,0 +1,10 @@
+class Solution:
+    # @param n, an integer
+    # @return an integer
+    def climbStairs(self, n):
+		a=[]
+		a.append(1)
+		a.append(2)
+		for i in range(0, n - 2):
+			a.append(a[-1] + a[-2])
+		return a[n - 1]

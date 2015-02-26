@@ -1,0 +1,19 @@
+class Solution
+{
+public:
+    int numTrees(int n)
+	{
+        if(n==0 || n==1)
+			return 1;
+		else
+		{
+			int res=0;
+			for(int i=0;i<n;i++)
+			{
+				int left=i, right=n-i-1;
+				res+=numTrees(left)*numTrees(right);
+			}
+			return res;
+		}
+    }
+};

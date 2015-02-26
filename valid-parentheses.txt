@@ -1,0 +1,26 @@
+class Solution {
+public:
+	bool isLeftParenthese(char c) {
+		return c == '(' || c == '[' || c == '{';
+	}
+	bool isMatch(char left, char right) {
+		return (left == '(' && right == ')') || (left == '[' && right == ']') || (left == '{' && right == '}');
+	}
+    bool isValid(string s) {
+        bool flag = true;
+		stack<char> sc;
+		size_t len = s.length();
+		for (size_t i = 0; i < len; i ++) {
+			char c = s[i];
+			if (isLeftParenthese(c)) {
+				sc.push(c);
+			} else if (sc.empty() || !isMatch(sc.top(), c)) {
+				flag = false;
+				break;
+			} else {
+				sc.pop();
+			}
+		}
+		return sc.empty() && flag;
+    }
+};

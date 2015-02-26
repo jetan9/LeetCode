@@ -1,0 +1,14 @@
+class Solution:
+    # @param root, a tree node
+    # @param sum, an integer
+    # @return a boolean
+    def hasPathSum(self, root, sum):
+		if root == None:
+			return False
+		elif root.left == None and root.right == None:
+			return sum == root.val
+		else:
+			leftRes = self.hasPathSum(root.left, sum - root.val)
+			rightRes = self.hasPathSum(root.right, sum - root.val)
+			return leftRes or rightRes
+        

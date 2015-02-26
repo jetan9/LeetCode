@@ -1,0 +1,21 @@
+class Solution:
+    # @param A, a list of integers
+    # @param target, an integer to be inserted
+    # @return integer
+    def searchInsert(self, A, target):
+		left = 0
+		right = len(A) - 1
+		mid = 0
+		while left <= right:
+			mid = (left + right) / 2
+			if A[mid] == target:
+				return mid
+			elif A[mid] > target:
+				right = mid - 1
+			else:
+				left = mid + 1
+		if A[mid] > target:
+			return mid
+		else:
+			return mid + 1
+        

@@ -1,3 +1,4 @@
+# Write your MySQL query statement below
 select d.Name as Department, f.Employee, f.Salary from `Department` as d inner join
 (select e.DepartmentId, e.Name as Employee, e.Salary from Employee as e inner join 
 (select DepartmentId,max(Salary) as Salary from Employee group by DepartmentId) as t 
